@@ -4,6 +4,7 @@ import TopBar from './topBar'
 import MainContent from './mainContent'
 import * as actions from '../actions'
 
+
 class GameContent extends Component{
 	render(){
 		return(
