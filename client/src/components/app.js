@@ -7,6 +7,7 @@ import EndContent from './endContent'
 
 class App extends Component{
 	renderContent(){
+		// this could be transformed into a switch case
 		if(this.props.location === 'start'){
 			return <Start />
 		}
