@@ -4,10 +4,30 @@ export default function(state = {
 	location: 'start',
 	points:0,
 	energyLevel:1000,
-	trivials:{},
-	maintenance:{},
-	reviews:{},
-	projects:{}
+  trivials:{
+    name:'Trivials',
+    active:false,
+    time:2,
+    points:10
+  },
+  maintenence:{
+    name:'Maintenence',
+    active:false,
+    time:6,
+    points:30
+  },
+  reviews:{
+    name:'Reviews',
+    active:false,
+    time:10,
+    points:60
+  },
+  projects:{
+    name:'Projects',
+    active:false,
+    time:30,
+    points:100
+  }
 }, action){
   switch(action.type){
     case LOCATION_CHANGE:
@@ -16,12 +36,6 @@ export default function(state = {
       };
     case TASK_TIMERS:
       console.log(action.payload, 'payload in reducer');
-      return {...state,
-        trivials:action.payload.trivials,
-        maintenance:action.payload.maintenance,
-        reviews:action.payload.reviews,
-        projects:action.payload.projects
-      }
     default:
       return state;
   }
