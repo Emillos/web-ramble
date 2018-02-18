@@ -3,24 +3,57 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 
 class TaskBar extends Component{
-	initiateTasks(){
-//		setTimeout(function(){ console.log(1); }, 1000);
+	taskTimer(taskId){
+		if(taskId === undefined){
+			taskId = this.props.state.tasks.activeTask
+		}
+		let oldTime;
+
+		setInterval(function(){ 
+			this.props.state.tasks.taskList.map((item, i) => {
+				if(item.id === taskId){
+					if(item.time === 0){
+						oldTime = (item.initialTime + 1)
+					}
+					else{
+						oldTime = item.time
+					}
+				}			
+			})	
+			let newTime = (oldTime - 1)
+
+		  let payload = {
+		 		id:taskId,
+		 		time: newTime
+		  }
+			this.props.TASK_TIMERS(payload)
+		}.bind(this), 1000);
 	}
-	updateTasks(e, taskValue){
-		console.log('clicked! '+ e.target +' which has a value of '+taskValue);
+	setTask(taskId){
+		console.log(taskId, 'taskID')
+		this.props.SET_ACTIVE_TASK(taskId)
+		this.taskTimer(taskId)		
+	}
+	taskCheck(e, taskId){
+		if(this.props.state.tasks.activeTask === 0){
+			this.setTask(taskId)
+		}
+	}
+	updateTasks(e, taskId){
+		this.taskCheck(taskId)
 	}
 	render(){
-		const { trivials, reviews, maintenence, projects } = this.props.state.init;
-		const taskLevels = [trivials, maintenence, reviews, projects ];
+		const { taskList } = this.props.state.tasks;
+		console.log(this.props, 'task in render')
 		return(
 			<div id='taskBar'>
 				<h5>Tasks</h5>
-				{taskLevels.map((task, i) => {
+				{taskList.map((task, i) => {
 					return(
-						<div key={i} className='taskItem' onClick={(e) => this.updateTasks(e, i)}>
-						<h6>{task.name}</h6>
-						<h6>{task.time +' Sec.'}</h6>
-					</div>
+						<div key={i} id={task.name} className='taskItem' onClick={(e) => this.taskCheck(e, task.id)}>
+							<h6>{task.name}</h6>
+							<h6>{task.time +' Sec.'}</h6>
+						</div>
 					)					
 				})}
 			</div>

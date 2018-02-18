@@ -1,9 +1,13 @@
-import { LOCATION_CHANGE, TASK_TIMERS } from './types';
-
-export const locationChange = (payload) => dispatch => {
-  dispatch({type:LOCATION_CHANGE, payload})
+export const LOCATION_CHANGE = (payload) => dispatch => {
+  dispatch({type:'LOCATION_CHANGE', payload})
 }
 
-export const taskTimers = (payload) => dispatch => {
-  dispatch({type:TASK_TIMERS, payload})
+export const TASK_TIMERS = (payload) => dispatch => {
+  console.log(payload, 'payload in actions')
+  dispatch({type:'TASK_TIMERS', payload})
 }
+
+export const SET_ACTIVE_TASK = (payload) => dispatch => {
+  dispatch({type:'SET_ACTIVE_TASK', payload})
+}
+

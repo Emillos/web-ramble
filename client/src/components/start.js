@@ -4,7 +4,7 @@ import * as actions from '../actions'
 
 class Start extends Component{
 	changeLocation(){
-		this.props.locationChange('gameArea');
+		this.props.LOCATION_CHANGE('gameArea');
 	}
 	render(){	
 		return(

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class TopBar extends Component{
 	render(){
-		console.log(this.props, 'this.props in topBar');
 		return(
 			<div id='topBar'>
 				<div className='topBarItem'>{'Points: '+this.props.state.init.points}</div>
