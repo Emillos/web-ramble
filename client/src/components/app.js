@@ -18,7 +18,7 @@ class App extends Component{
 			return <EndContent />			
 		}
 	}
-	render(){	
+	render(){
 		return(
 			<div className='container content'>
 				{this.renderContent()}

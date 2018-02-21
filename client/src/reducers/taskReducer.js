@@ -1,6 +1,7 @@
 export default function(state = {
   activeTask: 0,
-  timerOn: true,
+  timerOn: false,
+  interval:'',
   taskList:[
     {
       id:1,
@@ -40,7 +41,7 @@ export default function(state = {
     case 'TASK_TIMERS':
       let updatedTask = [];
       state.taskList.map((task, i) => {
-        if (task.id == action.payload.id){
+        if (task.id === action.payload.id){
          let updateTheTask =  {...task,
             time:action.payload.time
           }
@@ -56,7 +57,9 @@ export default function(state = {
     break
     case 'SET_ACTIVE_TASK':
       return{...state, 
-        activeTask:action.payload
+        activeTask:action.payload.taskId,
+        timerOn:true,
+        interval:action.payload.interval
       }
       break
     default:

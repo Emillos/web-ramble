@@ -8,7 +8,11 @@ export default function(state = {
       return {...state,
         location: action.payload
       }
-    break
+    case 'ADD_POINTS':
+      let addUp = state.points + action.payload.points
+      return{...state,
+        points:addUp
+      }
     default:
       return state
   }

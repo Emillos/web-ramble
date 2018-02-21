@@ -7,6 +7,7 @@ import * as actions from '../actions'
 
 class GameContent extends Component{
 	render(){
+    console.log(this.props.state, 'state in gamecontent')
 		return(
 			<div className='contentWrapper'>
 				<TopBar />

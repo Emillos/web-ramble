@@ -3,7 +3,7 @@ export const LOCATION_CHANGE = (payload) => dispatch => {
 }
 
 export const TASK_TIMERS = (payload) => dispatch => {
-  console.log(payload, 'payload in actions')
+  dispatch({type:'ADD_POINTS', payload})
   dispatch({type:'TASK_TIMERS', payload})
 }
 

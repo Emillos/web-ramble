@@ -3,48 +3,43 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 
 class TaskBar extends Component{
-	taskTimer(taskId){
-		if(taskId === undefined){
-			taskId = this.props.state.tasks.activeTask
-		}
-		let oldTime;
+	taskTimer = () => {
+		const { activeTask, taskList } = this.props.state.tasks
+		let oldTime
+		let points = 0
 
-		setInterval(function(){ 
-			this.props.state.tasks.taskList.map((item, i) => {
-				if(item.id === taskId){
-					if(item.time === 0){
-						oldTime = (item.initialTime + 1)
-					}
-					else{
-						oldTime = item.time
-					}
-				}			
-			})	
-			let newTime = (oldTime - 1)
+		taskList.map((item, i) => {
+			if(item.id === activeTask){
+				if(item.time === 0){
+					oldTime = (item.initialTime + 1)
+					points = item.points
+				}
+				else{
+					oldTime = item.time
+				}
+			}			
+		})	
+		let newTime = (oldTime - 1)
 
-		  let payload = {
-		 		id:taskId,
-		 		time: newTime
-		  }
-			this.props.TASK_TIMERS(payload)
-		}.bind(this), 1000);
-	}
-	setTask(taskId){
-		console.log(taskId, 'taskID')
-		this.props.SET_ACTIVE_TASK(taskId)
-		this.taskTimer(taskId)		
+	  let payload = {
+	  	points,
+	 		id:activeTask,
+	 		time: newTime
+	  }
+		this.props.TASK_TIMERS(payload)
 	}
 	taskCheck(e, taskId){
-		if(this.props.state.tasks.activeTask === 0){
-			this.setTask(taskId)
-		}
-	}
-	updateTasks(e, taskId){
-		this.taskCheck(taskId)
+		clearInterval(this.props.state.tasks.interval)
+
+		let interval = setInterval(this.taskTimer, 1000)
+		let payload = {
+			taskId,
+			interval
+		}			
+		this.props.SET_ACTIVE_TASK(payload)		
 	}
 	render(){
 		const { taskList } = this.props.state.tasks;
-		console.log(this.props, 'task in render')
 		return(
 			<div id='taskBar'>
 				<h5>Tasks</h5>
