@@ -6,19 +6,19 @@ import * as actions from '../actions'
 
 
 class GameContent extends Component{
-	render(){
+  render(){
     console.log(this.props.state, 'state in gamecontent')
-		return(
-			<div className='contentWrapper'>
-				<TopBar />
-				<MainContent />
-			</div>
-		);
-	}
+    return(
+      <div className='contentWrapper'>
+        <TopBar />
+        <MainContent />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state){
-	return { state:state }
+  return { state:state }
 }
 
 export default connect(mapStateToProps, actions)(GameContent)
