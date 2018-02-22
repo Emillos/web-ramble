@@ -7,12 +7,14 @@ class TaskBar extends Component{
     const { activeTask, taskList } = this.props.state.tasks
     let oldTime
     let points = 0
+    let mood = 0
 
     taskList.map((item, i) => {
       if(item.id === activeTask){
         if(item.time === 0){
           oldTime = (item.initialTime + 1)
           points = item.points
+          mood = item.mood
         }
         else{
           oldTime = item.time
@@ -22,6 +24,7 @@ class TaskBar extends Component{
     let newTime = (oldTime - 1)
 
     let payload = {
+      mood,
       points,
       id:activeTask,
       time: newTime
@@ -39,13 +42,13 @@ class TaskBar extends Component{
     this.props.SET_ACTIVE_TASK(payload)   
   }
   render(){
-    const { taskList } = this.props.state.tasks;
+    const { taskList, activeTask } = this.props.state.tasks;
     return(
       <div id='taskBar'>
         <h5>Tasks</h5>
         {taskList.map((task, i) => {
           return(
-            <div key={i} id={task.name} className='taskItem' onClick={(e) => this.taskCheck(e, task.id)}>
+            <div key={i} id={task.name} className={activeTask == task.id ? 'taskItem active' : 'taskItem'} onClick={(e) => this.taskCheck(e, task.id)}>
               <h6>{task.name}</h6>
               <h6>{task.time +' Sec.'}</h6>
             </div>

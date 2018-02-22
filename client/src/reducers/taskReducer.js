@@ -9,7 +9,8 @@ export default function(state = {
       active:false,
       time:2,
       initialTime:2,
-      points:10
+      points:10,
+      mood:2,
     },
     {
       id:2,
@@ -17,7 +18,8 @@ export default function(state = {
       active:false,
       time:6,
       initialTime:6,
-      points:30
+      points:30,
+      mood:7,
     },
     {
       id:3, 
@@ -25,7 +27,8 @@ export default function(state = {
       active:false,
       time:10,
       initialTime:10,
-      points:60
+      points:60,
+      mood:12,
     },
     {
       id:4,
@@ -33,7 +36,8 @@ export default function(state = {
       active:false,
       time:30,
       initialTime:30,
-      points:100
+      points:100,
+      mood:33,
     }
   ]
 }, action){
