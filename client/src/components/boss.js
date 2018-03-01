@@ -26,8 +26,9 @@ class Boss extends Component{
     return(
       <div id='boss'>
         <div className='bossMeter' style={this.style()} >
-          bossMoodMeter
+          BossMoodMeter
         </div>
+        <div className='bossImage'></div>
       </div>
     )
   }
