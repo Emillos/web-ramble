@@ -16,3 +16,7 @@ export const SET_ACTIVE_TASK = (payload) => dispatch => {
 export const BOSS_MOOD = (value) => dispatch => {
   dispatch({type:'BOSS_MOOD', value})
 }
+
+export const CLEAR_TASK = (value) => dispatch => {
+  dispatch({type: 'CLEAR_TASK', value})
+}

@@ -55,9 +55,9 @@ export default function(state = {
           updatedTask.push(task)
         }
       })
-       return {...state,
-          taskList:updatedTask
-        }
+     return {...state,
+        taskList:updatedTask
+      }
     break
     case 'SET_ACTIVE_TASK':
       return{...state, 
@@ -65,7 +65,10 @@ export default function(state = {
         timerOn:true,
         interval:action.payload.interval
       }
-      break
+    case 'CLEAR_TASK':
+      return {...state,
+        activeTask:action.value
+      }
     default:
       return state;
   }

@@ -15,6 +15,8 @@ class TaskBar extends Component{
           oldTime = (item.initialTime + 1)
           points = item.points
           mood = item.mood
+          clearInterval(this.props.state.tasks.interval)
+          this.props.CLEAR_TASK(0)
         }
         else{
           oldTime = item.time
