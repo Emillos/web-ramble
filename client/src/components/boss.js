@@ -12,7 +12,12 @@ class Boss extends Component{
   }
   bossTimer = () => {
     let value = this.props.state.init.bossMoodMeter - this.props.state.init.bossLvl
-    this.props.BOSS_MOOD(value)  
+    if(value === -1){
+      this.props.LOCATION_CHANGE('endArea');
+    }
+    else{
+      this.props.BOSS_MOOD(value)  
+    }
   }
   componentDidMount(){
     let interval = setInterval(this.bossTimer, this.props.state.init.bossTimer)
