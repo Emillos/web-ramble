@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TaskBar from './taskBar'
 import Boss from './boss'
+import Coffee from './coffee'
 
 class MainContent extends Component{
   render(){
@@ -8,6 +9,7 @@ class MainContent extends Component{
       <div id='mainContent'>
         <Boss />
         <TaskBar />
+        <Coffee />
         MainContent
       </div>
     );

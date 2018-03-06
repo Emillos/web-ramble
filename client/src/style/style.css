@@ -9,6 +9,24 @@
 	height: 100%;
 	background-image:url('../img/start.png');
 }
+#coffeeItem{
+	cursor: pointer;
+	background-image:url('../img/pot.png');
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  top: 190px;
+  left: 250px;
+}
+.coffee{
+  height: 28px;
+  width: 35px;
+  position: absolute;
+  top: 13px;
+  left: 20px;
+  border-radius: 6px;
+  background:#c57a3f;
+}
 button{
 	width: 200px;
 	height: 80px;
